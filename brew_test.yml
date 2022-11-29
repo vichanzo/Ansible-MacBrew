@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  
+  tasks:
+    - name: Install items with brew install
+      shell: "brew install {{item}}"
+      with_items:
+        - neofetch
+
+    - name: Install a list of brew
+      homebrew:
+        name: "{{ apps }}"
+        state: present
+      vars:
+        apps:
+          - neofetch
+          - tmux
+          - google-chrome
+          - visual-studio-code

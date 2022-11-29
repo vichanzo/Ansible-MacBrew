@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: yes
+  
+  tasks:
+    - name: Install the foo port
+      community.general.macports:
+        name: tightvnc
+
+#    - name: Install a list of ports
+#      community.general.macports:
+#        name: "{{ ports }}"
+#      vars:
+#        ports:
+#          - tightvnc

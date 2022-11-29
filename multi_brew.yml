@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  
+    - name: Install a list of brew
+      homebrew:
+        name: "{{ apps }}"
+      vars:
+        apps:
+          - tmux
+          - neofetch
+          - atom
+          - google-chrome
+      #      - google-drive
+      #      - google-hangouts
+          - iterm2
+          - keepassx
+          - visual-studio-code
+          - vmware-fusion
+          - docker-compose
+          - git
+          - nmap
+          - pyenv   
+          - python  
+          - tmux
+          - tree
+      #      - vault
+          - wget  
+          - zsh   
+          - zsh-syntax-highlighting
+

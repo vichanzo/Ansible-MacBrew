@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  
+  tasks:
+
+    - name: Install vlc with shell brew-cask
+      shell: brew install vlc --cask
+
+
+    - name: Install vlc using brew_cask
+      homebrew_cask:
+        name: vlc
+
+#    - name: Install
+#      homebrew:
+#        name: "{{item}}"
+#        with_items:
+#          - neofetch
+#          - tmux 
+
+    - name: Messsages
+      debug:
+        msg: "Items {{item}} is here"
+      with_items:
+        - apple
+        - orange
+        - htop
+
+    - name: Install items with brew install
+      shell: "brew install {{item}}"
+      with_items:
+        - neofetch
+        - tmux
+        - atom
+        - rectangle
+
+    - name: Install a list of ports
+      community.general.macports:
+        name: "{{ ports }}"
+      vars:
+        ports:
+          - tightvnc
