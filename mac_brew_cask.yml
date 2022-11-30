@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Install Programs using Homebrew
+      homebrew:
+        name: "{{ apps }}"
+        state: present
+      vars:
+        apps:
+          - "aircrack-ng"         # Wireless tools for cyber scanning
+          - "adwaita-icon-theme"  # commonly used icon theme
+          - "baobab"              # list files by size
+          - "freerdp"             # Remote Desktop released under Apache
+#          - "git"
+          - "git-secret"
+#          - "htop"
+#          - "keepassc"
+          - "mas"
+          - "mono"
+          - "nmap"
+          - "putty"
+          - "rclone"
+          - "rdesktop"
+          - "rmate"
+          - "winetricks"
+
+    - name: Install Programs using Brew Cask
+      homebrew_cask:
+        name: "{{ casks }}"
+        state: present
+        install_options: 'debug,appdir=/Applications'
+      vars:
+        casks:
+          - "alfred"
+          - "angry-ip-scanner"
+          - "audacity"
+          - "cyberduck"
+          - "darktable"
+          - "fuse"
+          - "keepassxc"
+          - "librecad"
+          - "meld"
+          - "playonmac"
+          - "powershell"
+          - "superduper"
+          - "visual-studio-code"
+          - "vlc"
+          - "xquartz"
