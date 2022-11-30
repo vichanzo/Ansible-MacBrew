@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    ### APPZ
+
+    - name: Install a list of brew
+      homebrew:
+        name: "{{ apps }}"
+        state: present
+      vars:
+        apps:
+          - neofetch
+          - wget
+
+    - name: Install apps using community general
+      community.general.homebrew:
+        name: curl
+        state: present
+ 
+    - name: Install list of apps using community general
+      community.general.homebrew:
+        name: "{{ my_apps }}"
+        state: present
+      vars:
+        my_apps:
+          - neofetch
+          - curl
+          - nmap
+          - bash-completion 
