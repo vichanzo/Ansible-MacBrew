@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  connection: local
 
   vars:
     applications:
@@ -12,9 +13,7 @@
       - caskroom/cask
 
     brew_utils:
-      - autoconf
-      - autojump # quickly navigate from cmd line
-      - bash # Bash 4
+      - bash
       - brew-cask
       - git
       - hub
