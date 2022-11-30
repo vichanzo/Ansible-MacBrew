@@ -2,9 +2,10 @@
 - hosts: localhost
   connection: local
 
+#######################################
   vars:
     applications:
-      - alfred
+      - alfred   
       - neofetch
 
     install_oh_my_zsh: true
@@ -12,19 +13,7 @@
     brew_taps:
       - caskroom/cask
 
-    brew_utils:
-      - bash
-      - brew-cask
-      - git
-      - hub
-      - tmux
-      - wget
-
-    zsh_path: /usr/local/bin/zsh
-
-    home: "{{ lookup('env','HOME') }}"
-
-
+#######################################
   tasks:
     - name: Check Homebrew is installed
       stat: path=/usr/local/bin/brew
@@ -33,10 +22,6 @@
     - name: Install Homebrew
       shell: ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
       when: brew_installed.stat.exists == false
-
-#    - name: Install required Homebrew Taps
-#      shell: brew tap {{ item }}
-#      with_items: brew_taps
 
     - name: Check homebrew-cask is installed
       stat: path=/usr/local/bin/brew-cask.rb
@@ -49,16 +34,16 @@
 
     ### APPZ
 
-    - name: Install Apps with brew-cask
-      shell: brew install vlc --cask
-
-    - name: Install App using brew_cask
-      homebrew_cask:
-        name: vlc      
-    - name: Install htop
+    - name: Install a list of brew
       homebrew:
-        name: htop
-    - name: Install neofetch
-      homebrew:
-        name: neofetch
+        name: "{{ apps }}"
+        state: present
+      vars:
+        apps:
+          - neofetch
+          - tmux
+          - bash
+          - neofetch
+          - wget
+          - curl
 
