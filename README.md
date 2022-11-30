@@ -35,5 +35,18 @@ Clone repo from github
 ```
 cd ~/setup
 git clone git@github.com:vichanzo/Ansible-MacBrew.git
+cd Ansible-MacBrew
+```
+
+
+Run the ansible playbook local.yml
+```
+ansible-playbook local.yml
+```
+
+```
+git add -A
+git commit -m "This commit does x"
+git push
 ```
 
